@@ -1,0 +1,57 @@
+snippet class
+	class ${1:ClassName}
+	{
+		${2:// code...}
+	}
+snippet while
+	while (${1:/* condition */}) {
+		${2:// code...}
+	}
+snippet do
+	do {
+		${2:// code... }
+	} while (${1:/* condition */});
+snippet if
+	if (${1:/* condition */}) {
+		${2:// code...}
+	}
+snippet else
+	else {
+		${1:// code...}
+	}
+snippet elseif
+	elseif (${1:/* condition */}) {
+		${2:// code...}
+	}
+snippet switch
+	switch ($${1:variable}) {
+		case '${2:value}':
+			${3:// code...}
+			break;
+		${5}
+		default:
+			${4:// code...}
+			break;
+	}
+snippet case
+	case '${1:value}':
+		${2:// code...}
+		break;
+snippet for
+	for (${2:$i} = 0; $2 < ${1:count}; $2${3:++}) {
+		${4: // code...}
+	}
+snippet foreach
+	foreach (${1:$variable} as ${2:$key}) {
+		${3:// code...}
+	}
+snippet function
+	${1:public }function ${2:FunctionName}(${3})
+	{/*{{{*/
+		${4:// code...}
+	}/*}}}*/
+snippet error
+	/**kiki*/error_log(strip_tags(print_r(${1:variable}, true))."\n", 3, "/tmp/error_user.log");
+# laravel
+snippet Service
+	Service::call('${1:ServiceName}@${2:FunctionName}', array(${3}));

@@ -1,0 +1,71 @@
+cnoremap w!! w !sudo tee %<cr>
+cnoremap r!! !rm %<cr>:qa!<cr>
+inoremap <c-f> <right>
+inoremap <c-b> <left>
+nnoremap <c-j> :cnext<cr>
+nnoremap <c-k> :cprev<cr>
+nnoremap y y`]
+nnoremap yy yy
+vnoremap y y`]
+nnoremap p p`[v`]=`]
+" nnoremap <expr> j (v:count==0? 'gj': 'j')
+" nnoremap <expr> k (v:count==0? 'gk': 'k')
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+" set pastetoggle=<c-v><c-v>
+inoremap <c-v> <esc>:set paste<cr>:r !pbpaste<CR>:set nopaste<cr>A
+
+inoremap ;; <esc>A;
+vnoremap ;; :!sed -e "s/$/;/g"<cr>
+inoremap ,, <esc>A,
+vnoremap ,, :!sed -e "s/$/,/g"<cr>
+
+inoremap '' ''<left>
+inoremap ''; '';
+inoremap '';; ''<esc>A;
+inoremap '', '',
+inoremap ''. ''.
+inoremap ''.. '..'<left><left>
+inoremap ''<backspace><backspace> ''<backspace><backspace>
+inoremap ''<space> ''<space>
+
+inoremap "" ""<left>
+inoremap ""; "";
+inoremap "";; ""<esc>A;
+inoremap "", "",
+inoremap "". "".
+inoremap "".. ".."<left><left>
+inoremap ""<backspace><backspace> ""<backspace><backspace>
+inoremap ""<space> ""<space>
+
+inoremap [] []<left>
+inoremap []; [];
+inoremap [];; []<esc>A;
+inoremap [], [],
+inoremap []<backspace><backspace> []<backspace><backspace>
+inoremap []<space> []<space>
+
+inoremap () ()<left>
+inoremap (); ();
+inoremap ();; ()<esc>A;
+inoremap (), (),
+inoremap (). ().
+inoremap ()-> ()->
+inoremap ()? ()?
+inoremap ()<backspace><backspace> ()<backspace><backspace>
+inoremap ()<space> ()<space>
+inoremap ()<cr> ()<cr>
+
+inoremap {{ <esc>A<space>{
+inoremap {{<space>  {{<space>
+inoremap {{}<cr> <esc>A<space>{<cr>}<esc>O
+
+inoremap {} {}<left>
+inoremap {}; {};
+inoremap {};; {}<esc>A;
+inoremap {}<cr> {<cr>}<esc>O
+inoremap {}z<cr> {/*{{{*/<cr>}/*}}}*/<esc>O
+
+inoremap <> <><left>
