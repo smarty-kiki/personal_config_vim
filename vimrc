@@ -34,7 +34,7 @@ retab
 
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm:set ff=unix<cr>:%s/\ *$//g<cr>:nohl<cr>
 noremap <Leader>csa <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5")<CR><del> <CR>
-noremap <Leader>csc <Esc>:!sh $SHELL_HOME/create_scope.sh <C-R>=getcwd()<CR>  <C-R>=system("pwd \| md5")<CR><del> <CR> <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5")<CR><del><CR>
+noremap <Leader>csc <Esc>:!sh $SHELL_HOME/create-scope.sh <C-R>=getcwd()<CR>  <C-R>=system("pwd \| md5")<CR><del> <CR> <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5")<CR><del><CR>
 noremap <leader>hb <ESC>:!hg blame % -u -d -q > /tmp/.blamelog <CR>:e /tmp/.blamelog<CR>
 noremap <leader>gb <ESC>:!git blame % -w > /tmp/.blamelog <CR>:e /tmp/.blamelog<CR>
 
@@ -87,7 +87,7 @@ silent! source ~/.vimlocal
 
 " php
 "  autocmd BufEnter *.php nnoremap <CR> :w!<CR>:!php -l %<CR>
-autocmd BufEnter *.php nnoremap <CR> :w!<CR>:cexpr system("sh $SHELL_HOME/php_syntax_err.sh <c-r>=expand('%:p')<cr>")<CR>
+autocmd BufEnter *.php nnoremap <CR> :w!<CR>:cexpr system("sh $SHELL_HOME/syntax-err-php.sh <c-r>=expand('%:p')<cr>")<CR>
 autocmd BufLeave *.php nunmap <CR>
 " autocmd BufEnter *.php nnoremap <space> :w! /tmp/beauty.php<cr>:!php-cs-fixer fix -q --level=symfony /tmp/beauty.php<cr><cr>mpgg<s-v>G:!cat /tmp/beauty.php<cr><cr>`p
 " autocmd BufLeave *.php nunmap <space>
@@ -108,9 +108,9 @@ autocmd FileType,BufNewFile php nnoremap <C-p> :call PhpDocSingle()<CR>
 autocmd FileType,BufNewFile php vnoremap <C-p> :call PhpDocRange()<CR>
 
 " Js
-autocmd BufEnter *.js nnoremap <CR> :w!<CR>:cexpr system("sh $SHELL_HOME/js_syntax_err.sh <c-r>=expand('%:p')<cr>")<CR>
+autocmd BufEnter *.js nnoremap <CR> :w!<CR>:cexpr system("sh $SHELL_HOME/syntax-err-js.sh <c-r>=expand('%:p')<cr>")<CR>
 autocmd BufLeave *.js nunmap <CR>
-autocmd BufEnter *.json nnoremap <CR> :w!<CR>:cexpr system("sh $SHELL_HOME/js_syntax_err.sh <c-r>=expand('%:p')<cr>")<CR>
+autocmd BufEnter *.json nnoremap <CR> :w!<CR>:cexpr system("sh $SHELL_HOME/syntax-err-js.sh <c-r>=expand('%:p')<cr>")<CR>
 autocmd BufLeave *.json nunmap <CR>
 autocmd FileType javascript set dictionary-=~/.vim/doc/js_func_list.txt
 autocmd FileType javascript set dictionary+=~/.vim/doc/js_func_list.txt

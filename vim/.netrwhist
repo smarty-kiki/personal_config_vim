@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/yaoyang/Documents/Vagrant/1mxian/1mxian/qc_int_web/project/config/production/nginx'
-let g:netrw_dirhist_2='/Users/yaoyang/Documents/Vagrant/1mxian/1mxian/qc_int_web'
-let g:netrw_dirhist_3='/Users/yaoyang/Documents/Vagrant/1mxian/1mxian'
-let g:netrw_dirhist_4='/Users/yaoyang/Documents/PRJLab'
-let g:netrw_dirhist_5='/Users/yaoyang/.cache'
-let g:netrw_dirhist_6='/Users/yaoyang/.cache/winetricks'
