@@ -1,1 +1,0 @@
-/Users/yaoyang/Developments/config/vim/bin/../vim
