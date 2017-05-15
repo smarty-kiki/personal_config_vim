@@ -52,6 +52,77 @@ snippet function
 	}/*}}}*/
 snippet error
 	/**kiki*/error_log(strip_tags(print_r(${1:variable}, true))."\n", 3, "/tmp/error_user.log");
-# laravel
-snippet Service
-	Service::call('${1:ServiceName}@${2:FunctionName}', array(${3}));
+# bootstrap
+snippet row
+	<div class="row">
+		${1}
+	</div>
+snippet col
+	<div class="col-lg-${1:12}">
+		${2}
+	</div>
+snippet colmd
+	<div class="col-md-${1:12}">
+		${2}
+	</div>
+snippet colsm
+	<div class="col-sm-${1:12}">
+		${2}
+	</div>
+snippet colxs
+	<div class="col-xs-${1:12}">
+		${2}
+	</div>
+snippet form
+	<form role="form" method="${1:GET}">
+		${2}
+	</form>
+snippet input
+	<div class="form-group">
+		<label>${1}</label>
+		<input type="${3:text}" class="form-control" placeholder="${5}" name="${2}" value="${4}">
+	</div>
+snippet inputg
+	<div class="form-group input-group">
+		<span class="input-group-addon">${1}</span>
+		<input type="${3:text}" class="form-control" placeholder="${5}" name="${2}" value="${4}">
+	</div>
+snippet header
+	<h1 class="page-header">${1}</h1>
+snippet panel
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			${1}
+		</div>
+		<div class="panel-body">
+			${2}
+		</div>
+	</div>
+snippet table
+	<div class="table-responsive">
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+snippet button
+	<div class="form-group input-group">
+		<button type="submit" class="btn btn-default">${1:ok}</button>
+	</div>
+snippet select
+	<select class="form-control" name="${1}">
+		<option value=""></option>
+	</select>
+snippet textarea
+	<div class="form-group">
+		<label>${1}</label>
+		<textarea class="form-control" rows="3" name="${2}"></textarea>
+	</div>

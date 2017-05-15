@@ -2,7 +2,10 @@ cnoremap w!! w !sudo tee %<cr>
 cnoremap r!! !rm %<cr>:qa!<cr>
 inoremap <c-f> <right>
 inoremap <c-b> <left>
-nnoremap <c-j> :cnext<cr>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 nnoremap <c-k> :cprev<cr>
 nnoremap y y`]
 nnoremap yy yy
@@ -46,6 +49,7 @@ inoremap [];; []<esc>A;
 inoremap [], [],
 inoremap []<backspace><backspace> []<backspace><backspace>
 inoremap []<space> []<space>
+inoremap []<cr>; [<cr>];<esc>O
 
 inoremap () ()<left>
 inoremap (); ();

@@ -25,6 +25,7 @@ set scrolloff=4
 set ambiwidth=double
 set completeopt=menu,longest
 set cursorline
+set iskeyword=@,48-57,192-255,$
 " set cscopequickfix=s-,c-,d-,i-,t-,e-
 " set autoread
 
@@ -60,6 +61,11 @@ vnoremap <tab> ==
 
 " global
 " autocmd InsertLeave * write
+vnoremap <c-h> :!sed -e "s///g"<left><left><left><left>
+nnoremap cih f<F><right>ct<
+nnoremap dih f<F><right>dt<
+nnoremap <c-d> viw"-yovar_dump(<esc>"-pa);exit;<esc>F)
+nnoremap <c-e> viw"-yo/**kiki*/error_log(print_r(<esc>"-pa, true)."\n", 3, '/tmp/error_user.log');exit;<esc>
 
 " svn
 autocmd BufEnter *.php.tmp /<<<<<<< .mine
