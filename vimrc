@@ -25,7 +25,6 @@ set scrolloff=4
 set ambiwidth=double
 set completeopt=menu,longest
 set cursorline
-set iskeyword=@,48-57,192-255,$
 " set cscopequickfix=s-,c-,d-,i-,t-,e-
 " set autoread
 
