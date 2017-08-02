@@ -120,6 +120,7 @@ autocmd BufLeave *.json nunmap <CR>
 autocmd FileType javascript set dictionary-=~/.vim/doc/js_func_list.txt
 autocmd FileType javascript set dictionary+=~/.vim/doc/js_func_list.txt
 autocmd FileType javascript set complete+=k
+autocmd FileType javascript set shiftwidth=2
 autocmd FileType javascript vnoremap / :!sed -e 's/^/\/\//g'<CR>
 autocmd FileType javascript vnoremap <Leader> :!sed -e 's/^\/\///g'<CR>
 
