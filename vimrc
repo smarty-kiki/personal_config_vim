@@ -131,6 +131,11 @@ autocmd BufEnter *.html nnoremap <CR> :w!<CR>:!open %<CR>
 autocmd BufLeave *.html nunmap <CR>
 autocmd FileType html nnoremap <CR> :w!<CR>:!open %<CR>
 
+" VUE
+autocmd BufEnter *.vue set ft=html
+autocmd BufEnter *.vue set shiftwidth=2
+autocmd BufEnter *.vue set autoindent
+
 " CSV
 autocmd BufEnter *.csv nnoremap <CR> :w!<CR>:!open %<CR>
 autocmd BufLeave *.csv nunmap <CR>

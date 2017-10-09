@@ -1,0 +1,23 @@
+# elemenet-ui + vue
+snippet row
+	<el-row :gutter="${2:0}">
+		${1}
+	</el-row>
+snippet col
+	<el-col :span="${1:12}">
+		${2}
+	</el-col>
+snippet cola
+	<el-col :xs="${1}" :sm="${2}" :md="${3}" :lg="${4}">
+		${5}
+	</el-col>
+snippet icon
+	<i class="el-icon-${1}"></i>
+snippet button
+	<el-button type="${1:primary}" :disabled="${3:false}">${2:按钮}</el-button>
+snippet radio
+	<el-radio class="radio" v-model="${3}" label="${2}">${1}</el-radio>
+snippet checkbox
+	<el-checkbox v-model="${2}">${1}</el-checkbox>
+snippet input
+	<el-input v-model="${3}" placeholder="${1}" :disabled="false">${2}</el-input>
