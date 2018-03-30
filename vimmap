@@ -17,7 +17,7 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 " set pastetoggle=<c-v><c-v>
-inoremap <c-v> <esc>:set paste<cr>:r !pbpaste<CR>:set nopaste<cr>A
+inoremap <c-v> <esc>mp:set paste<cr>:r !pbpaste<CR>:set nopaste<cr>mov`p=`oA
 
 inoremap ;; <esc>A;
 vnoremap ;; :!sed -e "s/$/;/g"<cr>

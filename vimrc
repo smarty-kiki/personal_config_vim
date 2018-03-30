@@ -33,8 +33,8 @@ highlight LineNr ctermfg=gray
 retab
 
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm:set ff=unix<cr>:%s/\ *$//g<cr>:nohl<cr>
-noremap <Leader>csa <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5")<CR><del> <CR>
-noremap <Leader>csc <Esc>:!sh $SHELL_HOME/create-scope.sh <C-R>=getcwd()<CR>  <C-R>=system("pwd \| md5")<CR><del> <CR> <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5")<CR><del><CR>
+noremap <Leader>csa <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5 \|  tr '\\n' ' '")<CR> <CR>
+noremap <Leader>csc <Esc>:!sh $SHELL_HOME/create-scope.sh <C-R>=getcwd()<CR>  <C-R>=system("pwd \| md5 \|  tr '\\n' ' '")<CR> <CR> <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5 \|  tr '\\n' ' '")<CR><CR>
 noremap <leader>hb <ESC>:!hg blame % -u -d -q > /tmp/.blamelog <CR>:e /tmp/.blamelog<CR>
 noremap <leader>gb <ESC>:!git blame % -w > /tmp/.blamelog <CR>:e /tmp/.blamelog<CR>
 
@@ -179,12 +179,12 @@ augroup END
 " 矫正操作
 " nnoremap <esc><esc> :execute system("ps aux \| grep say \| grep -v grep \|\| say '已经在普通模式了' &")<cr>:echoerr "已经在普通模式了"<cr>
 
-function! SaveFile()
-    if getbufvar("%", "&mod") == 0
-        call system("ps aux | grep say | grep -v grep || say '保存过了' &")
-    endif
-    return "w"
-endfunction
+" function! SaveFile()
+"     if getbufvar("%", "&mod") == 0
+"         call system("ps aux | grep say | grep -v grep || say '保存过了' &")
+"     endif
+"     return "w"
+" endfunction
 " cnoremap w<cr> <c-r>=SaveFile()<cr><cr>
 
 " let g:LargeFile = 1024 * 100
