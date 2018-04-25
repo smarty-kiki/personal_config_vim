@@ -33,10 +33,9 @@ highlight LineNr ctermfg=gray
 retab
 
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm:set ff=unix<cr>:%s/\ *$//g<cr>:nohl<cr>
-noremap <Leader>csa <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5 \|  tr '\\n' ' '")<CR> <CR>
-noremap <Leader>csc <Esc>:!sh $SHELL_HOME/create-scope.sh <C-R>=getcwd()<CR>  <C-R>=system("pwd \| md5 \|  tr '\\n' ' '")<CR> <CR> <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5 \|  tr '\\n' ' '")<CR><CR>
 noremap <leader>hb <ESC>:!hg blame % -u -d -q > /tmp/.blamelog <CR>:e /tmp/.blamelog<CR>
 noremap <leader>gb <ESC>:!git blame % -w > /tmp/.blamelog <CR>:e /tmp/.blamelog<CR>
+noremap <c-]> :FlyGrep<CR>
 
 "smartTab
 function! SmartTab()
@@ -158,11 +157,9 @@ if has("unix")
     if s:uname == "Darwin\n"
         vnoremap "+y :w !pbcopy<CR><CR> 
         nnoremap "+p :r !pbpaste<CR><CR>
-        noremap <C-]> :cs f g <C-R>=expand("<cword>")<CR><CR>
     else
         vmap "+y :w! /tmp/vim_paste.tmp<CR> 
         nmap "+p <s-v>:!cat /tmp/vim_paste.tmp<CR>
-        noremap <C-]> :cs f g <C-R>=expand("<cword>")<CR><CR>
     endif
 endif
 
