@@ -95,10 +95,6 @@ autocmd BufEnter *.php nnoremap <CR> :w!<CR>:cexpr system("sh $SHELL_HOME/syntax
 autocmd BufLeave *.php nunmap <CR>
 " autocmd BufEnter *.php nnoremap <space> :w! /tmp/beauty.php<cr>:!php-cs-fixer fix -q --level=symfony /tmp/beauty.php<cr><cr>mpgg<s-v>G:!cat /tmp/beauty.php<cr><cr>`p
 " autocmd BufLeave *.php nunmap <space>
-autocmd FileType php noremap \doci <Esc>:!grep -n -e 'class' -e 'interface' --color % \| less <CR>
-autocmd FileType php noremap \docf <Esc>:!grep -n -e ' function' --color % \| less <cr>
-autocmd FileType php noremap \docp <Esc>:!grep -n -e 'protected' -e 'private' -e 'public' --color % \| grep -v 'function' \| grep -v '*' \| grep -v '//' \| less <CR>
-autocmd FileType php noremap \docc <Esc>:!grep -n -e 'const' --color % \| less <CR>
 autocmd FileType php set dictionary-=~/.vim/doc/php_func_list.txt
 autocmd FileType php set dictionary+=~/.vim/doc/php_func_list.txt
 autocmd FileType php set complete+=k
@@ -129,6 +125,9 @@ autocmd BufLeave *.htm nunmap <CR>
 autocmd BufEnter *.html nnoremap <CR> :w!<CR>:!open %<CR>
 autocmd BufLeave *.html nunmap <CR>
 autocmd FileType html nnoremap <CR> :w!<CR>:!open %<CR>
+
+" Python
+autocmd BufEnter *.py nnoremap <CR> :w!<CR>:!python3 %<CR>
 
 " VUE
 autocmd BufEnter *.vue set ft=html
