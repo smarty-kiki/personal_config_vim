@@ -1,0 +1,20 @@
+snippet ---
+	---
+	display_name: ${1:display_name}
+	description: ${2:description}
+	structs: ${3:[]}
+	relationships: []
+	snaps: []
+	...
+snippet st
+	type: ${1:varchar(45)}
+	format: ~
+	format_description: ~
+	display_name: ${2:display_name}
+	description: ${3:description}
+	allow_null: false
+snippet rel
+	entity: ${1:entity}
+	type: ${2:type}
+snippet sn
+	structs: ${1:[]}
