@@ -1,6 +1,207 @@
-" load
+syntax on
+filetype plugin indent on
 
-silent! source https://raw.githubusercontent.com/smarty-kiki/personal_config_vim/master/vim/subconfig/vimset?token=AAOWOHMNYHHS6MNYA47R2TS5SHJTC
-silent! source https://raw.githubusercontent.com/smarty-kiki/personal_config_vim/master/vim/subconfig/vimfunction?token=AAOWOHKZXRBO6CJ7GSDAIRC5SHJUS
-silent! source https://raw.githubusercontent.com/smarty-kiki/personal_config_vim/master/vim/subconfig/vimmap?token=AAOWOHPTYGM7EFAS4JGWMQ25SHJXW
-silent! source ~/.vimlocal
+set incsearch
+set hlsearch
+set autoindent shiftwidth=4
+set ruler
+set showcmd
+set csto=0
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set foldcolumn=2
+set foldmethod=marker
+set showmatch
+set directory=/tmp/swp,~/tmp,/var/tmp,/tmp
+set hidden
+set autochdir
+set magic
+set scrolloff=4
+set pumheight=10
+set ambiwidth=double
+set completeopt=menu,longest
+set cursorline
+" set cscopequickfix=s-,c-,d-,i-,t-,e-
+" set autoread
+
+highlight LineNr ctermfg=gray
+
+" ft fix
+autocmd BufNewFile *.json set filetype=javascript
+autocmd Bufread *.json set filetype=javascript
+autocmd BufNewFile *.njs set filetype=javascript
+autocmd Bufread *.njs set filetype=javascript
+
+" php
+autocmd FileType php set shiftwidth=4
+
+" js
+autocmd FileType javascript set shiftwidth=2
+
+" vue
+autocmd BufEnter *.vue set ft=html
+autocmd BufEnter *.vue set shiftwidth=2
+autocmd BufEnter *.vue set autoindent
+
+autocmd FileType json set autoindent 
+autocmd FileType json set formatoptions=tcq2l 
+autocmd FileType json set textwidth=78 shiftwidth=2 
+autocmd FileType json set softtabstop=2 tabstop=8 
+autocmd FileType json set expandtab 
+autocmd FileType json set foldmethod=syntax 
+
+" prj
+autocmd Bufread *.prj Project %
+autocmd Bufread *.prj set noautochdir
+
+retab
+
+" let g:LargeFile = 1024 * 100
+" augroup LargeFile
+"     autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType,Syntax nofoldenable nobackup | setlocal noswapfile bufhidden=unload | endif
+" augroup END
+
+"smartTab
+function! SmartTab()
+    let col=col('.')-1
+    if !col || getline('.')[col-1] !~ '\k'
+        if getline('.')[col-1] == " "
+            return "\<Tab>"
+        else
+            return ''
+        endif
+    else
+        return "\<C-N>"
+    endif
+endfunction
+
+inoremap <tab> <C-R>=SmartTab()<CR>
+inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "<tab>"
+inoremap <expr> <cr> pumvisible() ? "\<c-e>" : "\<cr>"
+inoremap <expr> <c-l> pumvisible() ? "\<c-n>\<c-p>" : "\<c-l>"
+nnoremap <tab> ==
+vnoremap <tab> ==
+
+" mac 
+if has("unix")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+        vnoremap "+y :w !pbcopy<CR><CR> 
+        nnoremap "+p :r !pbpaste<CR><CR>
+    else
+        vmap "+y :w! /tmp/vim_paste.tmp<CR> 
+        nmap "+p <s-v>:!cat /tmp/vim_paste.tmp<CR>
+    endif
+endif
+
+"trim \r
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm:set ff=unix<cr>:%s/\ *$//g<cr>:nohl<cr>
+
+" php annotate
+autocmd FileType php vnoremap / :!sed -e 's/^/\/\//g'<CR>
+autocmd FileType php vnoremap <Leader> :!sed -e 's/^\/\///g'<CR>
+
+" js annotate
+autocmd FileType javascript vnoremap / :!sed -e 's/^/\/\//g'<CR>
+autocmd FileType javascript vnoremap <Leader> :!sed -e 's/^\/\///g'<CR>
+
+" php file init
+autocmd BufNewFile *.php exec append(0,"<?php")
+autocmd BufNewFile *.php normal G
+
+" Shell file init
+autocmd BufNewFile *.sh exec append(0,"#!/bin/bash")
+autocmd BufNewFile *.sh normal G
+
+" Graphviz file init
+autocmd BufNewFile *.gv exec append(0, "digraph G {")
+autocmd BufNewFile *.gv exec append(1, "    node [fontname = \"Kaiti SC Regular\"];")
+autocmd BufNewFile *.gv exec append(2, "}")
+autocmd BufNewFile *.gv normal G
+
+" svn
+autocmd BufEnter *.php.tmp /<<<<<<< .mine
+autocmd BufEnter *.php.*.tmp /<<<<<<< .mine
+autocmd Bufread *.php.tmp /<<<<<<< .mine
+autocmd Bufread *.php.*.tmp /<<<<<<< .mine
+
+" global
+nnoremap cih f<F><right>ct<
+nnoremap dih f<F><right>dt<
+nnoremap <c-d> viw"-yovar_dump(<esc>"-pa);exit;<esc>F)
+nnoremap <c-e> viw"-yo/**kiki*/error_log(print_r(<esc>"-pa, true)."\n", 3, '/tmp/error_user.log');exit;<esc>
+
+cnoremap w!! w !sudo tee %<cr>
+cnoremap r!! !rm %<cr>:qa!<cr>
+inoremap <c-f> <right>
+inoremap <c-b> <left>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap y y`]
+nnoremap yy yy
+vnoremap y y`]
+nnoremap p p`[v`]=`]
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+inoremap <c-v> <esc>mp:set paste<cr>:r !pbpaste<CR>:set nopaste<cr>mov`p=`oA
+
+inoremap ;; <esc>A;
+vnoremap ;; :!sed -e "s/$/;/g"<cr>
+inoremap ,, <esc>A,
+vnoremap ,, :!sed -e "s/$/,/g"<cr>
+
+inoremap '' ''<left>
+inoremap ''; '';
+inoremap '';; ''<esc>A;
+inoremap '', '',
+inoremap ''. ''.
+inoremap ''.. '..'<left><left>
+inoremap ''<backspace><backspace> ''<backspace><backspace>
+inoremap ''<space> ''<space>
+
+inoremap "" ""<left>
+inoremap ""; "";
+inoremap "";; ""<esc>A;
+inoremap "", "",
+inoremap "". "".
+inoremap "".. ".."<left><left>
+inoremap ""<backspace><backspace> ""<backspace><backspace>
+inoremap ""<space> ""<space>
+
+inoremap [] []<left>
+inoremap []; [];
+inoremap [];; []<esc>A;
+inoremap [], [],
+inoremap []<backspace><backspace> []<backspace><backspace>
+inoremap []<space> []<space>
+inoremap []<cr>; [<cr>];<esc>O
+inoremap []<cr>, [<cr>],<esc>O
+
+inoremap () ()<left>
+inoremap (); ();
+inoremap ();; ()<esc>A;
+inoremap (), (),
+inoremap (). ().
+inoremap ()-> ()->
+inoremap ()? ()?
+inoremap ()<backspace><backspace> ()<backspace><backspace>
+inoremap ()<space> ()<space>
+inoremap ()<cr> ()<cr>
+
+inoremap {{ <esc>A<space>{
+inoremap {{<space>  {{<space>
+inoremap {{}<cr> <esc>A<space>{<cr>}<esc>O
+
+inoremap {} {}<left>
+inoremap {}; {};
+inoremap {};; {}<esc>A;
+inoremap {}<cr> {<cr>}<esc>O
+inoremap {}z<cr> {/*{{{*/<cr>}/*}}}*/<esc>O
+
+inoremap <> <><left>
