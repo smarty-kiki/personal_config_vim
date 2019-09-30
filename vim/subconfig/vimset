@@ -1,0 +1,64 @@
+syntax on
+filetype plugin indent on
+
+set incsearch
+set hlsearch
+set autoindent shiftwidth=4
+set ruler
+set showcmd
+set csto=0
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set foldcolumn=2
+set foldmethod=marker
+set showmatch
+set directory=/tmp/swp,~/tmp,/var/tmp,/tmp
+set hidden
+set autochdir
+set magic
+set scrolloff=4
+set pumheight=10
+set ambiwidth=double
+set completeopt=menu,longest
+set cursorline
+" set cscopequickfix=s-,c-,d-,i-,t-,e-
+" set autoread
+
+highlight LineNr ctermfg=gray
+
+" ft fix
+autocmd BufNewFile *.json set filetype=javascript
+autocmd Bufread *.json set filetype=javascript
+autocmd BufNewFile *.njs set filetype=javascript
+autocmd Bufread *.njs set filetype=javascript
+
+" php
+autocmd FileType php set shiftwidth=4
+
+" js
+autocmd FileType javascript set shiftwidth=2
+
+" vue
+autocmd BufEnter *.vue set ft=html
+autocmd BufEnter *.vue set shiftwidth=2
+autocmd BufEnter *.vue set autoindent
+
+autocmd FileType json set autoindent 
+autocmd FileType json set formatoptions=tcq2l 
+autocmd FileType json set textwidth=78 shiftwidth=2 
+autocmd FileType json set softtabstop=2 tabstop=8 
+autocmd FileType json set expandtab 
+autocmd FileType json set foldmethod=syntax 
+
+" prj
+autocmd Bufread *.prj Project %
+autocmd Bufread *.prj set noautochdir
+
+retab
+
+" let g:LargeFile = 1024 * 100
+" augroup LargeFile
+"     autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType,Syntax nofoldenable nobackup | setlocal noswapfile bufhidden=unload | endif
+" augroup END

@@ -11,4 +11,3 @@ function disable
 
 disable vim
 disable vimrc
-disable vimmap

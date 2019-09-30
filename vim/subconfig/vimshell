@@ -1,0 +1,45 @@
+" blame
+noremap <leader>hb <ESC>:!hg blame % -u -d -q > /tmp/.blamelog <CR>:e /tmp/.blamelog<CR>
+noremap <leader>gb <ESC>:!git blame % -w > /tmp/.blamelog <CR>:e /tmp/.blamelog<CR>
+
+"cscope
+noremap <Leader>csa <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5 \|  tr '\\n' ' '")<CR> <CR>
+noremap <Leader>csc <Esc>:!sh $SHELL_HOME/create-scope.sh <C-R>=getcwd()<CR>  <C-R>=system("pwd \| md5 \|  tr '\\n' ' '")<CR> <CR> <ESC>:cs kill -1 <CR> <ESC>:cs add /tmp/<C-R>=system("pwd \| md5 \|  tr '\\n' ' '")<CR><CR>
+noremap <C-]> :cs f g <C-R>=expand("<cword>")<CR><CR>
+noremap <c-\> :cs f e <C-R>=expand("<cword>")<CR><CR>
+
+" php
+autocmd BufEnter *.php nnoremap <CR> :w!<CR>:cexpr system("sh $SHELL_HOME/syntax-err-php.sh <c-r>=expand('%:p')<cr>")<CR>
+autocmd BufLeave *.php nunmap <CR>
+autocmd FileType php set dictionary-=~/.vim/doc/php_func_list.txt
+autocmd FileType php set dictionary+=~/.vim/doc/php_func_list.txt
+autocmd FileType php set complete+=k
+autocmd FileType,BufNewFile php nnoremap <C-p> :call PhpDocSingle()<CR>
+autocmd FileType,BufNewFile php vnoremap <C-p> :call PhpDocRange()<CR>
+
+" Js
+autocmd BufEnter *.js nnoremap <CR> :w!<CR>:cexpr system("sh $SHELL_HOME/syntax-err-js.sh <c-r>=expand('%:p')<cr>")<CR>
+autocmd BufLeave *.js nunmap <CR>
+autocmd BufEnter *.json nnoremap <CR> :w!<CR>:cexpr system("sh $SHELL_HOME/syntax-err-js.sh <c-r>=expand('%:p')<cr>")<CR>
+autocmd BufLeave *.json nunmap <CR>
+autocmd FileType javascript set dictionary-=~/.vim/doc/js_func_list.txt
+autocmd FileType javascript set dictionary+=~/.vim/doc/js_func_list.txt
+autocmd FileType javascript set complete+=k
+
+" HTML
+autocmd BufEnter *.htm nnoremap <CR> :w!<CR>:!open %<CR>
+autocmd BufLeave *.htm nunmap <CR>
+autocmd BufEnter *.html nnoremap <CR> :w!<CR>:!open %<CR>
+autocmd BufLeave *.html nunmap <CR>
+autocmd FileType html nnoremap <CR> :w!<CR>:!open %<CR>
+
+" Python
+autocmd BufEnter *.py nnoremap <CR> :w!<CR>:!python3 %<CR>
+
+" CSV
+autocmd BufEnter *.csv nnoremap <CR> :w!<CR>:!open %<CR>
+autocmd BufLeave *.csv nunmap <CR>
+
+" Graphviz
+autocmd Bufread *.gv nnoremap <CR> :!rm -f %.pdf<CR>:w!<CR>:!dot -T pdf -o %.pdf %<CR>:!open %.pdf<CR>
+autocmd BufNewFile *.gv nnoremap <CR> :!rm -f %.pdf<CR>:w!<CR>:!dot -T pdf -o %.pdf %<CR>:!open %.pdf<CR>

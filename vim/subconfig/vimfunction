@@ -1,0 +1,69 @@
+"smartTab
+function! SmartTab()
+    let col=col('.')-1
+    if !col || getline('.')[col-1] !~ '\k'
+        if getline('.')[col-1] == " "
+            return "\<Tab>"
+        else
+            return ''
+        endif
+    else
+        return "\<C-N>"
+    endif
+endfunction
+
+inoremap <tab> <C-R>=SmartTab()<CR>
+inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "<tab>"
+inoremap <expr> <cr> pumvisible() ? "\<c-e>" : "\<cr>"
+inoremap <expr> <c-l> pumvisible() ? "\<c-n>\<c-p>" : "\<c-l>"
+nnoremap <tab> ==
+vnoremap <tab> ==
+
+" mac 
+if has("unix")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+        vnoremap "+y :w !pbcopy<CR><CR> 
+        nnoremap "+p :r !pbpaste<CR><CR>
+    else
+        vmap "+y :w! /tmp/vim_paste.tmp<CR> 
+        nmap "+p <s-v>:!cat /tmp/vim_paste.tmp<CR>
+    endif
+endif
+
+"trim \r
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm:set ff=unix<cr>:%s/\ *$//g<cr>:nohl<cr>
+
+" php annotate
+autocmd FileType php vnoremap / :!sed -e 's/^/\/\//g'<CR>
+autocmd FileType php vnoremap <Leader> :!sed -e 's/^\/\///g'<CR>
+
+" js annotate
+autocmd FileType javascript vnoremap / :!sed -e 's/^/\/\//g'<CR>
+autocmd FileType javascript vnoremap <Leader> :!sed -e 's/^\/\///g'<CR>
+
+" php file init
+autocmd BufNewFile *.php exec append(0,"<?php")
+autocmd BufNewFile *.php normal G
+
+" Shell file init
+autocmd BufNewFile *.sh exec append(0,"#!/bin/bash")
+autocmd BufNewFile *.sh normal G
+
+" Graphviz file init
+autocmd BufNewFile *.gv exec append(0, "digraph G {")
+autocmd BufNewFile *.gv exec append(1, "    node [fontname = \"Kaiti SC Regular\"];")
+autocmd BufNewFile *.gv exec append(2, "}")
+autocmd BufNewFile *.gv normal G
+
+" svn
+autocmd BufEnter *.php.tmp /<<<<<<< .mine
+autocmd BufEnter *.php.*.tmp /<<<<<<< .mine
+autocmd Bufread *.php.tmp /<<<<<<< .mine
+autocmd Bufread *.php.*.tmp /<<<<<<< .mine
+
+" global
+nnoremap cih f<F><right>ct<
+nnoremap dih f<F><right>dt<
+nnoremap <c-d> viw"-yovar_dump(<esc>"-pa);exit;<esc>F)
+nnoremap <c-e> viw"-yo/**kiki*/error_log(print_r(<esc>"-pa, true)."\n", 3, '/tmp/error_user.log');exit;<esc>

@@ -1,0 +1,5 @@
+" load
+silent! source ~/.vim/subconfig/vimset
+silent! source ~/.vim/subconfig/vimfunction
+silent! source ~/.vim/subconfig/vimmap
+silent! source ~/.vimlocal

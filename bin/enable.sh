@@ -11,4 +11,3 @@ function enable
 
 enable vim
 enable vimrc
-enable vimmap

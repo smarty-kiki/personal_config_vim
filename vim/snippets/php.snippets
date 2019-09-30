@@ -126,3 +126,14 @@ snippet textarea
 		<label>${1}</label>
 		<textarea class="form-control" rows="3" name="${2}"></textarea>
 	</div>
+# frame
+snippet if_get
+	if_get('${1}'. function (${2})
+	{
+		${3}
+	});
+snippet if_post
+	if_post('${1}'. function (${2})
+	{
+		${3}
+	});
