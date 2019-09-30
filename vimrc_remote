@@ -1,6 +1,6 @@
 " load
 
-silent! source https://raw.githubusercontent.com/smarty-kiki/personal_config_vim/master/vim/subconfig/vimset
-silent! source https://raw.githubusercontent.com/smarty-kiki/personal_config_vim/master/vim/subconfig/vimfunction
-silent! source https://raw.githubusercontent.com/smarty-kiki/personal_config_vim/master/vim/subconfig/vimmap
+silent! source https://raw.githubusercontent.com/smarty-kiki/personal_config_vim/master/vim/subconfig/vimset?token=AAOWOHMNYHHS6MNYA47R2TS5SHJTC
+silent! source https://raw.githubusercontent.com/smarty-kiki/personal_config_vim/master/vim/subconfig/vimfunction?token=AAOWOHKZXRBO6CJ7GSDAIRC5SHJUS
+silent! source https://raw.githubusercontent.com/smarty-kiki/personal_config_vim/master/vim/subconfig/vimmap?token=AAOWOHPTYGM7EFAS4JGWMQ25SHJXW
 silent! source ~/.vimlocal
