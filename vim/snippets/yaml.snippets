@@ -1,20 +1,18 @@
 snippet ---
 	---
 	display_name: ${1:display_name}
-	description: ${2:description}
-	structs: ${3:[]}
-	relationships: []
-	snaps: []
+	structs: ${2:[]}
 	...
-snippet st
-	type: ${1:varchar(45)}
-	format: ~
-	format_description: ~
-	display_name: ${2:display_name}
-	description: ${3:description}
-	allow_null: false
-snippet rel
-	entity: ${1:entity}
-	type: ${2:belongs_to}
-snippet sn
-	structs: ${1:[]}
+snippet -
+	- from:
+	    entity: ${1:entity}
+	    to_attribute_name: ${2:to_attribute_name}
+	    to_display: ${3:"$this->id"}
+	    to_snaps: ${4:[]}
+	  to:
+	    entity: ${5:entity}
+	    from_attribute_name: ${6:entity}
+	    from_display: ${6:"$this->id"}
+	    from_snaps: ${7:[]}
+	  relationship_type: ${8:has_many}
+	  association_type: ${9:aggregation_or_composition}

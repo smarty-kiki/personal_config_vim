@@ -50,6 +50,7 @@ inoremap []<cr>, [<cr>],<esc>O
 
 inoremap () ()<left>
 inoremap (); ();
+inoremap ();i ();<left><left>
 inoremap ();; ()<esc>A;
 inoremap (), (),
 inoremap (). ().

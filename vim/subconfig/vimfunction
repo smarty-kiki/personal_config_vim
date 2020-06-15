@@ -44,10 +44,18 @@ autocmd FileType javascript vnoremap <Leader> :!sed -e 's/^\/\///g'<CR>
 
 " php file init
 autocmd BufNewFile *.php exec append(0,"<?php")
+autocmd BufNewFile *.sh exec append(1,"")
 autocmd BufNewFile *.php normal G
+
+" python file init
+autocmd BufNewFile *.py exec append(0,"#!/usr/bin/python")
+autocmd BufNewFile *.py exec append(1,"# -*- coding: UTF-8 -*-")
+autocmd BufNewFile *.sh exec append(2,"")
+autocmd BufNewFile *.py normal G
 
 " Shell file init
 autocmd BufNewFile *.sh exec append(0,"#!/bin/bash")
+autocmd BufNewFile *.sh exec append(1,"")
 autocmd BufNewFile *.sh normal G
 
 " Graphviz file init

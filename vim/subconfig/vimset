@@ -45,6 +45,11 @@ autocmd BufEnter *.vue set ft=html
 autocmd BufEnter *.vue set shiftwidth=2
 autocmd BufEnter *.vue set autoindent
 
+" yaml
+autocmd BufEnter *.yml set shiftwidth=2
+autocmd BufEnter *.yml set autoindent
+
+" json
 autocmd FileType json set autoindent 
 autocmd FileType json set formatoptions=tcq2l 
 autocmd FileType json set textwidth=78 shiftwidth=2 
