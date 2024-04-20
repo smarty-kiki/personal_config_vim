@@ -7,13 +7,8 @@ snippet ---
 snippet -
 	- from:
 	    entity: ${1:entity}
-	    to_attribute_name: ${2:to_attribute_name}
-	    to_display: ${3:"$this->id"}
-	    to_snaps: ${4:[]}
 	  to:
 	    entity: ${5:entity}
-	    from_attribute_name: ${6:entity}
-	    from_display: ${6:"$this->id"}
-	    from_snaps: ${7:[]}
 	  relationship_type: ${8:has_many}
-	  association_type: ${9:aggregation_or_composition}
+	  associate_delete: true
+	  require: true

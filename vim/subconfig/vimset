@@ -29,6 +29,7 @@ set cursorline
 highlight LineNr ctermfg=gray
 
 " ft fix
+autocmd Bufread *.diff.php set filetype=diff
 autocmd BufNewFile *.json set filetype=javascript
 autocmd Bufread *.json set filetype=javascript
 autocmd BufNewFile *.njs set filetype=javascript
@@ -60,6 +61,10 @@ autocmd FileType json set foldmethod=syntax
 " prj
 autocmd Bufread *.prj Project %
 autocmd Bufread *.prj set noautochdir
+
+" shell
+autocmd BufEnter *.sh set shiftwidth=4
+autocmd BufEnter *.sh set autoindent
 
 retab
 

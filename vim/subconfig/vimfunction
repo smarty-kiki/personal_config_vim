@@ -74,5 +74,6 @@ autocmd Bufread *.php.*.tmp /<<<<<<< .mine
 " global
 nnoremap cih f<F><right>ct<
 nnoremap dih f<F><right>dt<
-nnoremap <c-d> viw"-yovar_dump(<esc>"-pa);exit;<esc>F)
-nnoremap <c-e> viw"-yo/**kiki*/error_log(print_r(<esc>"-pa, true)."\n", 3, '/tmp/error_user.log');exit;<esc>
+nnoremap <c-d> viw"-yoecho<space>'<pre>';var_dump(<esc>"-pa);exit;<esc>F)
+nnoremap <c-e> viw"-yo/**kiki*/error_log(print_r(<esc>"-pa, true)."\n", 3, '/tmp/php_module.log');exit;<esc>
+nnoremap zi di(maO<esc>p^vi'y^Pa<space>=<space><esc>I$<esc>A;<esc>==`aPbi$<esc>

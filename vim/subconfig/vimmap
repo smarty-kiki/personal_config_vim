@@ -62,6 +62,7 @@ inoremap []<backspace><backspace> []<backspace><backspace>
 inoremap []<space> []<space>
 inoremap []<cr>; [<cr>];<esc>O
 inoremap []<cr>, [<cr>],<esc>O
+inoremap []<cr> [<cr>]<esc>O
 
 inoremap ()<esc> ()<esc>
 inoremap () ()<left>

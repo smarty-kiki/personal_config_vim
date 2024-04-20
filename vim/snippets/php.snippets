@@ -51,7 +51,7 @@ snippet function
 		${4:// code...}
 	}/*}}}*/
 snippet error
-	/**kiki*/error_log(strip_tags(print_r(${1:variable}, true))."\n", 3, "/tmp/error_user.log");
+	/**kiki*/error_log(strip_tags(print_r(${1:variable}, true))."\n", 3, "/tmp/php_module.log");
 # bootstrap
 snippet row
 	<div class="row">
@@ -128,12 +128,16 @@ snippet textarea
 	</div>
 # frame
 snippet if_get
-	if_get('${1}'. function (${2})
+	if_get('${1}', function (${2})
 	{
 		${3}
 	});
 snippet if_post
-	if_post('${1}'. function (${2})
+	if_post('${1}', function (${2})
 	{
 		${3}
 	});
+snippet finp
+	$${1} = input('${2}');
+snippet ffin
+	$${1} = dao('${2}')->find(${3});
